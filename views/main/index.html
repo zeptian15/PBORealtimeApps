@@ -178,10 +178,22 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="./../../public/js/bootstrap.min.js"></script>
-	<!-- Backend -->
-	<script src="../../controllers/MainController.js"></script>
+
 	<!-- Data Tables -->
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script src="./../../public/js/pace.js"></script>
+	<script>
+		$(document).ajaxStart(function () {
+			Pace.restart();
+		});
+	</script>
+
+	<!-- Socket IO -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+	<!-- Backend -->
+	<script src="../../controllers/MainController.js"></script>
+
 </body>
 
 </html>

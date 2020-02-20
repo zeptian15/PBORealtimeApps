@@ -35,26 +35,18 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<input class="search" type="text" placeholder="Masukan nama">
+						<input id="filterNama" onkeyup="filterNama()" class="search" type="text"
+							placeholder="Masukan nama">
 					</div>
-					<div class="col-sm-3">
-						<select class="cmb" name="kelas" id="">
-							<option value="">XII-RPL-1</option>
-							<option value="">XII-RPL-2</option>
-							<option value="">XII-RPL-3</option>
-						</select>
-					</div>
-					<div class="col-sm-3">
-						<select class="cmb" name="status" id="">
-							<option value="">Terlambat</option>
-							<option value="">Tepat waktu</option>
-						</select>
+
+					<div class="pull-right">
+						<button id="btn_filter" class="btn btn-primary">Filter</button>
 					</div>
 
 				</div>
 
 				<div class="table text-center table2">
-					<table class="table table-striped">
+					<table id="tableKehadiran" class="table table-striped">
 						<thead>
 							<tr>
 								<th class="text-center">Nama</th>
@@ -71,6 +63,30 @@
 			<!-- akhir card-body -->
 		</div>
 	</div>
+
+	<script>
+		function filterNama() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("filterNama");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("tableKehadiran");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 	<script src="../../controllers/DetailController.js"></script>
 </body>
 

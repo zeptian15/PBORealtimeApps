@@ -6,8 +6,13 @@ const dateFormat = require('dateformat')
 const electron = require('electron')
 const url = require('url')
 const path = require('path')
+const swal = require('sweetalert2')
+
 // Inisialisasi BrowserWindows
-const {BrowserWindow, ipcMain} = electron
+const {
+    BrowserWindow,
+    ipcMain
+} = electron
 
 // Jalankan Fungsi
 setupData()
@@ -54,7 +59,7 @@ async function setupData() {
             waktu.textContent = listData[i].waktu;
             status.textContent = listData[i].status;
             // Cek Apakah telat atau tidak
-            if(listData[i].status == "Terlambat"){
+            if (listData[i].status == "Terlambat") {
                 status.className = 'btn btn-telat'
             } else {
                 status.className = 'btn btn-tepat'
@@ -105,3 +110,19 @@ function setupDate() {
     document.getElementById('hari').innerHTML = hari
     document.getElementById('tanggal').innerHTML = tanggal + " " + bulan + " " + tahun
 }
+
+var socket = io('http://localhost:3000');
+
+socket.on('new-data', (data) => {
+    swal.fire({
+        icon: 'success',
+        title: 'Kamu berhasil absen!',
+        showConfirmButton: false,
+        timer: 1000
+    })
+    // document.location.reload();
+    var tbody = document.querySelector('tbody')
+    tbody.children.remove()
+    setupData()
+    console.log('Updated')
+});
