@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Detail</title>
+	<link rel="stylesheet" href="../../public/style.css">
+	<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<div class="back">
+			<div class="row">
+				<div class="col-xs-2">
+					<a href="../main/index.html">
+						<p class="pull-left"><button class="btn btn-success">Kembali</button></p>
+					</a>
+				</div>
+				<div class="col-xs-10">
+
+				</div>
+			</div>
+		</div>
+		<div class="card kartu2">
+			<!-- card-body -->
+			<div class="card-body">
+				<div class="row">
+
+					<div class="col-sm-3">
+						<div class="tittle">
+							<h1><b>Presensi</b></h1>
+							<p>hari ini</p>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<input class="search" type="text" placeholder="Masukan nama">
+					</div>
+					<div class="col-sm-3">
+						<select class="cmb" name="kelas" id="">
+							<option value="">XII-RPL-1</option>
+							<option value="">XII-RPL-2</option>
+							<option value="">XII-RPL-3</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<select class="cmb" name="status" id="">
+							<option value="">Terlambat</option>
+							<option value="">Tepat waktu</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="table text-center table2">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="text-center">Nama</th>
+								<th class="text-center">Kelas</th>
+								<th class="text-center">Jam masuk</th>
+								<th class="text-center">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- akhir card-body -->
+		</div>
+	</div>
+	<script src="../../controllers/DetailController.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>One Tap Realtime</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="" class="brand-logo center">One Tap Realtime</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="loadingProgress" class="preloader-wrapper big align-center">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+
+        <table id="tbl_data_makanan" class="table-responsive">
+            <tr class="align-center">
+                <th>Nama</th>
+                <th>Jenis</th>
+                <th>Kategori</th>
+                <th>Kalori</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="./../../controllers/MainController.js"></script>
+</body>
+
+</html>

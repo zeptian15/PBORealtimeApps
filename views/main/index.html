@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OneTap</title>
+	<link rel="stylesheet" href="./../../public/style.css">
+	<link href="./../../public/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="header">
+			<div class="row">
+				<div class="col-sm-1">
+
+				</div>
+				<div class="col-sm-5">
+					<img class="img" src="./../../public/img/ic_header.png" alt="">
+				</div>
+				<div class="col-sm-5">
+					<div class="isi">
+						<div class="row">
+							<div class="col-sm-6">
+
+								<h1 id="hari">Kamis</h1>
+								<h5 id="tanggal">24 februari 2020</h5>
+
+								<div class="card kotak">
+									<div class="row">
+										<div class="col-xs-6 text-center">
+											<p>Tepat Waktu</p>
+											<h2 id="tv_siswa_tepat">25</h2>
+										</div>
+										<div class="col-xs-6">
+											<img src="./../../public/img/ic_tepat_waktu.png" alt="">
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-6 kanan">
+								<div class="row">
+									<div class="col-xs-12 jam">
+										<h1 id="waktu"><b>08:30:01</b></h1>
+									</div>
+								</div>
+
+
+								<div class="card kotak">
+									<div class="row">
+										<div class="col-xs-6 text-center">
+											<p>Terlambat</p>
+											<h2 id="tv_siswa_telat">25</h2>
+										</div>
+										<div class="col-xs-6">
+											<img src="./../../public/img/ic_terlambat.png" alt="">
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card kartu">
+			<!-- card-body -->
+			<div class="card-body">
+				<div class="row">
+
+					<div class="col-sm-6">
+						<div class="tittle">
+							<h1><b>Presensi</b></h1>
+							<p>hari ini</p>
+						</div>
+					</div>
+
+					<div class="col-sm-6 ">
+						<a href="../detail/detail.html">
+							<p class="pull-right"><button class="btn btn-success">Lihat Semua Kehadiran</button></p>
+						</a>
+					</div>
+
+				</div>
+
+				<div class="table text-center">
+					<table id="tbl_data_presensi" class="table table-striped">
+						<thead>
+							<tr class="table-primary">
+								<th class="text-center">Nama</th>
+								<th class="text-center">Kelas</th>
+								<th class="text-center">Jam masuk</th>
+								<th class="text-center">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- akhir card-body -->
+		</div>
+	</div>
+
+
+	<!-- card_header -->
+	<!-- 			<div class="card-header">
+				<img class="img" src="img/header.png" alt="">
+				<div class="content">
+					<div class="row">
+						<div class="col-lg-5">
+							
+						</div>
+						<div class="col-lg-7">
+							<div class="isi">
+								<div class="row">
+									<div class="col-sm-6">
+
+										<h1>Kamis</h1>
+										<h5>24 februari 2020</h5>
+
+										<div class="card kotak">
+											<div class="row">
+												<div class="col-xs-6 text-center">
+													<p>Tepat Waktu</p>
+													<h2>25</h2>
+												</div>
+												<div class="col-xs-6">
+													<img src="img/ic_tepat_waktu.png" alt="">
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-sm-6 kanan">
+										<div class="row">
+											<div class="col-xs-12 jam">
+												<h1><b>08:30:01</b></h1>
+											</div>
+										</div>
+										
+
+										<div class="card kotak">
+											<div class="row">
+												<div class="col-xs-6 text-center">
+													<p>Terlambat</p>
+													<h2>25</h2>
+												</div>
+												<div class="col-xs-6">
+													<img src="img/ic_terlambat.png" alt="">
+												</div>
+											</div>
+										</div>
+
+									</div>
+									
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+	<!-- akhir card-header -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="./../../public/js/bootstrap.min.js"></script>
+	<!-- Backend -->
+	<script src="../../controllers/MainController.js"></script>
+	<!-- Data Tables -->
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</body>
+
+</html>
