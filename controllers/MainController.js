@@ -15,9 +15,10 @@ const {
 } = electron
 
 // Jalankan Fungsi
-setupData()
+// setupData()
 setupTime()
 setupDate()
+setupPengumuman()
 
 function getDataFromAPI() {
     return new Promise(listFromAPI => {
@@ -31,48 +32,71 @@ function getDataFromAPI() {
     })
 }
 
-async function setupData() {
+function getLastPengumuman() {
+    return new Promise(listPengumumanFromAPI => {
+        setTimeout(() => {
+            request('http://apirfidpbo.herokuapp.com/pengumuman', {
+                json: true
+            }, (error, response, body) => {
+                listPengumumanFromAPI(body)
+            }, 3000)
+        })
+    })
+}
+
+async function setupPengumuman(){
     // Masukan data ke dalam table
-    var listFromAPI = await getDataFromAPI()
+    var listFromAPI = await getLastPengumuman()
     var listData = listFromAPI.results
 
-    // Setup statistik
-    var siswaTepat = listFromAPI.siswaTepat
-    document.getElementById('tv_siswa_tepat').innerHTML = siswaTepat
-    var siswaTelat = listFromAPI.siswaTelat
-    document.getElementById('tv_siswa_telat').innerHTML = siswaTelat
+    console.log(listData[0].isi)
 
-    // Table
-    var tbody = document.querySelector('tbody')
-
-    // Handle error data
-    if (listData.length > 0) {
-        for (var i = 0; i < 6; i++) {
-            var tr = document.createElement('tr');
-            var nama = document.createElement('td');
-            var kelas = document.createElement('td');
-            var waktu = document.createElement('td');
-            var status = document.createElement('td');
-
-            nama.textContent = listData[i].nama;
-            kelas.textContent = listData[i].kelas;
-            waktu.textContent = listData[i].waktu;
-            status.textContent = listData[i].status;
-            // Cek Apakah telat atau tidak
-            if (listData[i].status == "Terlambat") {
-                status.className = 'btn btn-telat'
-            } else {
-                status.className = 'btn btn-tepat'
-            }
-
-            tr.appendChild(nama);
-            tr.appendChild(kelas);
-            tr.appendChild(waktu);
-            tr.appendChild(status);
-            tbody.appendChild(tr);
-        }
-    }
+    // Set Value
+    document.getElementById('tv_pengumuman').innerHTML = listData[0].isi
 }
+
+// async function setupData() {
+//     // Masukan data ke dalam table
+//     var listFromAPI = await getDataFromAPI()
+//     var listData = listFromAPI.results
+
+//     // Setup statistik
+//     var siswaTepat = listFromAPI.siswaTepat
+//     document.getElementById('tv_siswa_tepat').innerHTML = siswaTepat
+//     var siswaTelat = listFromAPI.siswaTelat
+//     document.getElementById('tv_siswa_telat').innerHTML = siswaTelat
+
+//     // Table
+//     var tbody = document.querySelector('tbody')
+
+//     // Handle error data
+//     if (listData.length > 0) {
+//         for (var i = 0; i < 6; i++) {
+//             var tr = document.createElement('tr');
+//             var nama = document.createElement('td');
+//             var kelas = document.createElement('td');
+//             var waktu = document.createElement('td');
+//             var status = document.createElement('td');
+
+//             nama.textContent = listData[i].nama;
+//             kelas.textContent = listData[i].kelas;
+//             waktu.textContent = listData[i].waktu;
+//             status.textContent = listData[i].status;
+//             // Cek Apakah telat atau tidak
+//             if (listData[i].status == "Terlambat") {
+//                 status.className = 'btn btn-telat'
+//             } else {
+//                 status.className = 'btn btn-tepat'
+//             }
+
+//             tr.appendChild(nama);
+//             tr.appendChild(kelas);
+//             tr.appendChild(waktu);
+//             tr.appendChild(status);
+//             tbody.appendChild(tr);
+//         }
+//     }
+// }
 
 function showLoading(isShow) {
     var loadingProgress = document.getElementById('loadingProgress')
@@ -84,12 +108,11 @@ function showLoading(isShow) {
 }
 
 function setupTime() {
-    var timeDisplay = document.getElementById('waktu');
+    var timeDisplay = document.getElementById('tv_jam');
     var tanggal = dateFormat(new Date().toLocaleString('en-US', {
         timeZone: 'Asia/Jakarta'
     }), "HH:MM:ss")
     timeDisplay.innerHTML = tanggal;
-    console.log(tanggal)
 }
 setInterval(setupTime, 1000);
 
@@ -107,18 +130,18 @@ function setupDate() {
     var bulan = bulan[_bulan]
     var tahun = _tahun
 
-    document.getElementById('hari').innerHTML = hari
-    document.getElementById('tanggal').innerHTML = tanggal + " " + bulan + " " + tahun
+    document.getElementById('tv_tanggal').innerHTML = hari + ', ' + tanggal + " " + bulan + " " + tahun
 }
 
-var socket = io('http://localhost:3000');
+// var socket = io('https://apirfidpbo.herokuapp.com');
+var socket = io('http://localhost:3000/');
 
 socket.on('new-data', (data) => {
     swal.fire({
         icon: 'success',
-        title: 'Kamu berhasil absen!',
+        title: 'Selamat pagi!\n' + data + ', Semangat belajar yaa!',
         showConfirmButton: false,
-        timer: 1000
+        timer: 3000
     })
     // document.location.reload();
     var tbody = document.querySelector('tbody')
